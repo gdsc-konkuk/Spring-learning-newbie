@@ -17,15 +17,13 @@ public class UserController {
     }
     @GetMapping("/users")
     public String getUser(@RequestParam("name") String name){
-        int prevVisitCount;
-
         try {
-            prevVisitCount= helloDao.countByUserName(name).orElse(0);
             helloDao.insertUserName(name);
-            if(prevVisitCount == 0) {
+            int visitCount= helloDao.countByUserName(name).orElse(1);
+            if(visitCount == 1) {
                 return "안녕하세요!" + name;
             } else {
-                return name + "님 안녕하세요, " + (prevVisitCount + 1) + "번째 방문이시군요.";
+                return name + "님 안녕하세요, " + (visitCount) + "번째 방문이시군요.";
             }
         } catch (Exception exception) {
             return "서버 에러";
