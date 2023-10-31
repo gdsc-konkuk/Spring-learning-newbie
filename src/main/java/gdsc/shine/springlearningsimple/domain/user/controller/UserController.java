@@ -1,4 +1,4 @@
-package gdsc.shine.springlearningsimple.controller;
+package gdsc.shine.springlearningsimple.domain.user.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
