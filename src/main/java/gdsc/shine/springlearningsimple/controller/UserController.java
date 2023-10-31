@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-    private HelloDao helloDao;
+    private final HelloDao helloDao;
 
     public UserController(HelloDao helloDao) {
         this.helloDao = helloDao;
