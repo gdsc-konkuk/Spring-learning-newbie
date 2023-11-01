@@ -21,7 +21,7 @@
 - __답 : 어노테이션이 달린 클래스를 애플리케이션의 컨트롤러로 등록하는 역할.__
 
 
-- 서버에 요청이 들어오면 `Dispatcher` 라는 애가 `@Controller`을 달고있는 클래스들을 찾고 그 안에서 `@RequestMapping`이 달린거를 찾는다.
+- 서버에 요청이 들어오면 `Dispatcher` 라는 애가 `@Controller`을 달고 있는 클래스들을 찾고 그 안에서 `@RequestMapping`이 달린거를 찾는다.
   - 특정 URI로 들어온 요청을 처리할때 매치되는 컨트롤러로 넘겨주는 역할로 이해.
 - `@Controller` 는 뷰를 반환하고 view-resolver에서 이를 처리하여 다시 넘겨준다.
   - `ResponseEntity`를 만들어서 반환하면 그냥 데이터를 뷰 처리안하고 넘겨준다
@@ -30,6 +30,8 @@
 ### 4. `@ResponseBody`의 의미
 - 답: 어노테이션이 붙은 메소드의 반환값을 `HTTP ResponseBody` 로 변환시켜준다.
 - 내부적으로는 HttpMessageConverter이 담당한다.
+- 해당 어노테이션이 달려있으면 view-resolve 과정을 거치지 않고 데이터를 HTTP ResponseBody에 넣어 반환한다.
+- `@RestController`에 `@ResponseBody`가 달려있어서 데이터를 반환하면 그냥 뷰처리 없이 넘어간다.
 ---
 # 과제 2
 
