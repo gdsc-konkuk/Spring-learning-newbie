@@ -16,4 +16,9 @@ public class UserService {
 	public void insertUserByName(String userName) {
 		userRepository.insertUserByName(userName);
 	}
+
+	public int countByUserName(String userName) {
+		return userRepository.countByUserName(userName);
+	}
+
 }
