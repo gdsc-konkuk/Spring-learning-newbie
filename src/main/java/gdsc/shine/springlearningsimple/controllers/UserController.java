@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final HelloDao helloDao;
-    @Autowired
+
     public UserController(HelloDao helloDao) {
         this.helloDao = helloDao;
     }

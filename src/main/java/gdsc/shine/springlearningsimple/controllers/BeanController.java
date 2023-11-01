@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class BeanController {
     private final ApplicationContext ac;
-    @Autowired
+
     public BeanController(ApplicationContext ac) {
         this.ac = ac;
     }
