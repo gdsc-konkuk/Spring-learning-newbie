@@ -9,5 +9,13 @@ public class User {
 
 	private String name;
 
+	private User(Long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	public static User of(Long id, String name) {
+		return new User(id, name);
+	}
 
 }
