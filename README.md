@@ -85,5 +85,35 @@ public class HelloController {
         return Optional.ofNullable(jdbcTemplate.queryForObject(sql, Integer.TYPE, userName));
     }
 ```
----
 
+
+# 과제 4
+
+### 빈을 출력하는 컨트롤러만들기
+
+- 애플리케이션 컨텍스트에서 `getBeanDefinitionNames` 메소드를 사용하니 사용되는 모든 빈들이 다 출력됬다.
+- 방법이 없을까 하고 찾아보다가 `ListableBeanFactory` -> `BeanFactory` -> `FactoryBean` -> `BeanDefinition`에 도달했다.
+- 여기서 딱 하나가 있었다. 바로 아래 부분이다. 
+```java
+    /*
+    * Role hint indicating that a {@code BeanDefinition} is a major part
+    * of the application. Typically corresponds to a user-defined bean.
+    */
+      int ROLE_APPLICATION = 0;
+
+```
+- 유저가 define한 빈이면 저게 있다는 것 같은데...
+
+```java
+	/**
+	 * Get the role hint for this {@code BeanDefinition}. The role hint
+	 * provides the frameworks as well as tools an indication of
+	 * the role and importance of a particular {@code BeanDefinition}.
+	 * @see #ROLE_APPLICATION
+	 * @see #ROLE_SUPPORT
+	 * @see #ROLE_INFRASTRUCTURE
+	 */
+	int getRole();
+```
+- 그런데 모든 빈의 Definition을 보고 getRole을 통해 필터를 걸면 해결되지 않을까.
+- ... 아직 해결못했습니다. 
