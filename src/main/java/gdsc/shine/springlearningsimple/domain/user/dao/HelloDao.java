@@ -12,4 +12,9 @@ public class HelloDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	public void insertUserByName(String userName) {
+		String sql = "INSERT INTO users (name) VALUES (?)";
+		jdbcTemplate.update(sql, userName);
+	}
+
 }
