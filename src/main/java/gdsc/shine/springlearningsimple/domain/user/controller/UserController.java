@@ -4,25 +4,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import gdsc.shine.springlearningsimple.domain.user.repository.UserRepository;
+import gdsc.shine.springlearningsimple.domain.user.application.UserService;
 
 @RestController
 public class UserController {
 
-	private final UserRepository userRepository;
+	private final UserService userService;
 
-	public UserController(UserRepository userRepository) {
-		this.userRepository = userRepository;
+	public UserController(UserService userService) {
+		this.userService = userService;
 	}
 
 	@GetMapping("/users")
 	public String sayHello(@RequestParam String name) {
-		int visitedCount = userRepository.countByUserName(name);
+		int visitedCount = userService.countByUserName(name);
 		if (visitedCount == 0) {
-			userRepository.insertUserByName(name);
+			userService.insertUserByName(name);
 			return "안녕하세요 ! " + name;
 		}
-		userRepository.insertUserByName(name);
+		userService.insertUserByName(name);
 		return name + "님 안녕하세요, " + visitedCount + "번째 방문이시군요 ! 허허허";
 	}
 
