@@ -17,12 +17,11 @@ public class UserController {
 
 	@GetMapping("/users")
 	public String sayHello(@RequestParam String name) {
+		userService.insertUserByName(name);
 		int visitedCount = userService.countByUserName(name);
-		if (visitedCount == 0) {
-			userService.insertUserByName(name);
+		if (visitedCount == 1) {
 			return "안녕하세요 ! " + name;
 		}
-		userService.insertUserByName(name);
 		return name + "님 안녕하세요, " + visitedCount + "번째 방문이시군요 ! 허허허";
 	}
 
