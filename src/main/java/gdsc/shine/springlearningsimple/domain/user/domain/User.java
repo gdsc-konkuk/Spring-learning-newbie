@@ -1,10 +1,13 @@
 package gdsc.shine.springlearningsimple.domain.user.domain;
 
+import org.springframework.data.annotation.Id;
+
 import lombok.Getter;
 
 @Getter
 public class User {
 
+	@Id
 	private Long id;
 
 	private String name;
