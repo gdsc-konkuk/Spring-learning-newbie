@@ -17,7 +17,13 @@ public class UserController {
 
 	@GetMapping("/users")
 	public String sayHello(@RequestParam String name) {
-		return "안녕하세요 ! " + name;
+		int visitedCount = helloDao.countByUserName(name);
+		if (visitedCount == 0) {
+			helloDao.insertUserByName(name);
+			return "안녕하세요 ! " + name;
+		}
+		helloDao.insertUserByName(name);
+		return name + "님 안녕하세요, " + visitedCount + "번째 방문이시군요 ! 허허허";
 	}
 
 }
