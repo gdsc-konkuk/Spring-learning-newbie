@@ -6,4 +6,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HelloDao {
 
+	private final JdbcTemplate jdbcTemplate;
+
+	public HelloDao(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 }
