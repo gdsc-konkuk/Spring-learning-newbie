@@ -1,5 +1,7 @@
 package gdsc.shine.springlearningsimple.domain.user.dao;
 
+import java.util.Optional;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +21,6 @@ public class HelloDao {
 
 	public int countByUserName(String userName) {
 		String sql = "SELECT COUNT(*) FROM users WHERE name = ?";
-		return jdbcTemplate.queryForObject(sql, Integer.class, userName);
+		return Optional.ofNullable(jdbcTemplate.queryForObject(sql, Integer.class, userName)).orElse(0);
 	}
 }
