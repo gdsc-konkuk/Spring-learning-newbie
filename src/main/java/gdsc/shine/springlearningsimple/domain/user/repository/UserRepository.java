@@ -1,4 +1,4 @@
-package gdsc.shine.springlearningsimple.domain.user.dao;
+package gdsc.shine.springlearningsimple.domain.user.repository;
 
 import java.util.Optional;
 
@@ -6,11 +6,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class HelloDao {
+public class UserRepository {
 
 	private final JdbcTemplate jdbcTemplate;
 
-	public HelloDao(JdbcTemplate jdbcTemplate) {
+	public UserRepository(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
