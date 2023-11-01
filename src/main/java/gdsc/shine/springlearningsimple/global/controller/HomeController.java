@@ -15,7 +15,7 @@ public class HomeController {
 		this.applicationContext = applicationContext;
 	}
 
-	@GetMapping("/home")
+	@GetMapping("/hello")
 	public String greetingWorld() {
 		return "Hello World !!!";
 	}
