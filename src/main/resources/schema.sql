@@ -1,6 +1,4 @@
-drop table if exists users;
-
-create table users
+create table if not exists users
 (
     id   bigint auto_increment,
     name varchar(255) not null,
