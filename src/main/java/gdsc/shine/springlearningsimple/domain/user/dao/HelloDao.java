@@ -17,4 +17,8 @@ public class HelloDao {
 		jdbcTemplate.update(sql, userName);
 	}
 
+	public int countByUserName(String userName) {
+		String sql = "SELECT COUNT(*) FROM users WHERE name = ?";
+		return jdbcTemplate.queryForObject(sql, Integer.class, userName);
+	}
 }
