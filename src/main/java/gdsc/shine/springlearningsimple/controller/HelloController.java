@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Users {
+public class HelloController {
 
     private final HelloDao helloDao;
 
     @Autowired
-    public Users(HelloDao helloDao) {
+    public HelloController(HelloDao helloDao) {
         this.helloDao = helloDao;
     }
 
@@ -21,7 +21,9 @@ public class Users {
         this.helloDao.insertUserByName(username);
 
         int accessCount = this.helloDao.countByUserName(username);
-        if (accessCount == 1) {
+        boolean isFirstAccess = accessCount == 1;
+        
+        if (isFirstAccess) {
             return String.format("안녕하세요! %s", username);
         } else {
             return String.format("%s님 안녕하세요, %d번째 방문이시군요!", username, accessCount);
