@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class HelloDao {
 
@@ -21,6 +23,6 @@ public class HelloDao {
 
     public int countByUserName(String userName) {
         String sql = "SELECT count(*) FROM users WHERE name = ? GROUP BY name";
-        return jdbcTemplate.queryForObject(sql, Integer.class, userName);
+        return Optional.ofNullable(jdbcTemplate.queryForObject(sql, Integer.class, userName)).orElse(0);
     }
 }
