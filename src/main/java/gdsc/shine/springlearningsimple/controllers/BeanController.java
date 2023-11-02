@@ -15,6 +15,7 @@ public class BeanController {
     public BeanController(ApplicationContext ac) {
         this.ac = ac;
     }
+
     @GetMapping("/beans")
     public List<String> getBeans() {
         return Arrays.asList(ac.getBeanDefinitionNames());

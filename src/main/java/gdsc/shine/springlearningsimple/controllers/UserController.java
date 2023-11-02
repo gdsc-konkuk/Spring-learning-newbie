@@ -15,6 +15,7 @@ public class UserController {
     public UserController(HelloDao helloDao) {
         this.helloDao = helloDao;
     }
+
     @GetMapping("/users")
     public String getUser(@RequestParam("name") String name){
         try {

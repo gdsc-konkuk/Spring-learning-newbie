@@ -17,6 +17,7 @@ public class HelloDao {
         String sql = "insert into USERS (NAME) values (?)";
         jdbcTemplate.update(sql, userName);
     }
+
     public Optional<Integer> countByUserName(String userName) {
         String sql = "select COUNT(*) from USERS where NAME = (?)";
         return Optional.ofNullable(jdbcTemplate.queryForObject(sql, Integer.TYPE, userName));
