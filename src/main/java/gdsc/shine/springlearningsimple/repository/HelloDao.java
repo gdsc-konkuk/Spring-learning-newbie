@@ -22,7 +22,7 @@ public class HelloDao {
     }
 
     public int countByUserName(String userName) {
-        String sql = "SELECT count(*) FROM users WHERE name = ? GROUP BY name";
-        return Optional.ofNullable(jdbcTemplate.queryForObject(sql, Integer.class, userName)).orElse(0);
+        String sql = "UPDATE users SET name = ? WHERE name = ?";
+        return jdbcTemplate.update(sql, userName, userName);
     }
 }
