@@ -19,10 +19,7 @@ public class UserController {
         helloDao.insertUserByName(name);
 
         int visitedCnt =  helloDao.countByUserName(name);
-        if(visitedCnt == FIRST_VISITED) {
-            return "안녕하세요! " + name;
-        } else {
-            return name + "님 안녕하세요, " + visitedCnt + "번째 방문이시군요!";
-        }
+        if(visitedCnt == FIRST_VISITED) return "안녕하세요! " + name;
+        return name + "님 안녕하세요, " + visitedCnt + "번째 방문이시군요!";
     }
 }
