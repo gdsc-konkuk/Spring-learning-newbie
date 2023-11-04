@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
     private final HelloDao helloDao;
+    private final int FIRST_VISITED = 1;
 
     public UserController(HelloDao helloDao) {
         this.helloDao = helloDao;
@@ -18,12 +19,10 @@ public class UserController {
         helloDao.insertUserByName(name);
 
         int visitedCnt =  helloDao.countByUserName(name);
-
-        if(visitedCnt == 1) {
+        if(visitedCnt == FIRST_VISITED) {
             return "안녕하세요! " + name;
         } else {
             return name + "님 안녕하세요, " + visitedCnt + "번째 방문이시군요!";
         }
-
     }
 }
