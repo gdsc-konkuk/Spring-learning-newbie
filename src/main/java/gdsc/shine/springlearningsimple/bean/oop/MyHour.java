@@ -11,4 +11,12 @@ public class MyHour {
         this.hour = hour;
     }
 
+    public void setHour() {
+        this.hour = hour;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
 }
