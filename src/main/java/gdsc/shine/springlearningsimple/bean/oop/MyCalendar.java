@@ -13,15 +13,15 @@ public class MyCalendar {
         this.calendar = calendar;
     }
 
-    private void setCalendar(Calendar calendar) {
+    public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
     }
 
-    private Calendar getCalendar() {
+    public Calendar getCalendar() {
         return calendar;
     }
 
-    private String getDateMessage() {
+    public String getDateMessage() {
         if (calendar.get(Calendar.HOUR_OF_DAY) < 12) {
             return "오전";
         }
