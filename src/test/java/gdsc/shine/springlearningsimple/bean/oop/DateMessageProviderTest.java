@@ -1,20 +1,23 @@
 package gdsc.shine.springlearningsimple.bean.oop;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DateMessageProviderTest {
     @Test
     public void 오전() throws Exception {
-        DateMessageProvider provider = new DateMessageProvider();
-        assertThat(provider.getDateMessage(), is("오전"));
+        MyCalendar myCalendar = new MyCalendar();
+        myCalendar.setCurrentHour(11);
+
+        assertEquals("오전", myCalendar.getDateMessage());
     }
 
     @Test
     public void 오후() throws Exception {
-        DateMessageProvider provider = new DateMessageProvider();
-        assertThat(provider.getDateMessage(), is("오후"));
+        MyCalendar myCalendar = new MyCalendar();
+        myCalendar.setCurrentHour(12);
+
+        assertEquals("오후", myCalendar.getDateMessage());
     }
 }
