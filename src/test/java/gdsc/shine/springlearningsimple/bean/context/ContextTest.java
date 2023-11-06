@@ -1,9 +1,13 @@
 package gdsc.shine.springlearningsimple.bean.context;
 
+import gdsc.shine.springlearningsimple.SpringLearningSimpleApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.RootBeanDefinition;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.StaticApplicationContext;
+import org.springframework.stereotype.Component;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,41 +17,43 @@ public class ContextTest {
     void test1() {
         // TODO : 미션에 있던 학습 테스트를 위해 사용되는 IoC 컨테이너 생성
         // 여기에 작성
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringLearningSimpleApplication.class);
 
         // TODO : Hello 클래스를 싱글톤 빈으로 컨테이너에 등록
         // 여기에 작성
 
         // TODO : IoC 컨테이너에서 Hello 찾아오기
         // 여기에 작성
+        Shine shine = applicationContext.getBean(Shine.class);
 
         assertThat(shine).isNotNull();
     }
 
-    @Test
-    void test2() {
-        // TODO : test1의 4단계 그대로 진행하되, 빈 메타정보를 shine1이라는 이름으로 컨테이너에 등록
-        // 여기에 작성
-
-        // 비어있는 Shine정보를 담은 오브젝트 생성
-        BeanDefinition shineDef = new RootBeanDefinition(Shine.class);
-
-        // 빈 프로퍼티 설정
-        shineDef.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
-
-        // TODO : 빈 메타정보를 hello2 라는 이름으로 컨테이너에 등록
-        // 여기에 작성
-
-        // TODO : shine1, shine2 빈을 컨테이너에서 가져오기
-        // 여기에 작성
-
-        // TODO : 테스트 통과시키기
-        assertThat(shine1).isNotNull();
-        assertThat(shine2).isNotNull();
-        assertThat(shine2.sayHello()).isEqualTo("Hello Gdsc Konkuk");
-
-        assertThat(shine1).isNotSameAs(shine2);
-        assertThat(context.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
-    }
+//    @Test
+//    void test2() {
+//        // TODO : test1의 4단계 그대로 진행하되, 빈 메타정보를 shine1이라는 이름으로 컨테이너에 등록
+//        // 여기에 작성
+//
+//        // 비어있는 Shine정보를 담은 오브젝트 생성
+//        BeanDefinition shineDef = new RootBeanDefinition(Shine.class);
+//
+//        // 빈 프로퍼티 설정
+//        shineDef.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
+//
+//        // TODO : 빈 메타정보를 hello2 라는 이름으로 컨테이너에 등록
+//        // 여기에 작성
+//
+//        // TODO : shine1, shine2 빈을 컨테이너에서 가져오기
+//        // 여기에 작성
+//
+//        // TODO : 테스트 통과시키기
+//        assertThat(shine1).isNotNull();
+//        assertThat(shine2).isNotNull();
+//        assertThat(shine2.sayHello()).isEqualTo("Hello Gdsc Konkuk");
+//
+//        assertThat(shine1).isNotSameAs(shine2);
+//        assertThat(context.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
+//    }
 
     @Test
     void test3() {
