@@ -30,6 +30,6 @@ public class MyCalendar {
     }
 
     public void setCurrentHour(int hour) {
-        calendar.set(calendar.get(Calendar.HOUR_OF_DAY), hour);
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
     }
 }
