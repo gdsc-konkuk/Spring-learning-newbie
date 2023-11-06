@@ -20,4 +20,12 @@ public class MyCalendar {
     private Calendar getCalendar() {
         return calendar;
     }
+
+    private String getDateMessage() {
+        if (calendar.get(Calendar.HOUR_OF_DAY) < 12) {
+            return "오전";
+        }
+
+        return "오후";
+    }
 }
