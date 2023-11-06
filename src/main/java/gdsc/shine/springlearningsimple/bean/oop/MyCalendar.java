@@ -28,4 +28,8 @@ public class MyCalendar {
 
         return "오후";
     }
+
+    public void setCurrentHour(int hour) {
+        calendar.set(calendar.get(Calendar.HOUR_OF_DAY), hour);
+    }
 }
