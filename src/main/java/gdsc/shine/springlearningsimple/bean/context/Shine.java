@@ -1,5 +1,8 @@
 package gdsc.shine.springlearningsimple.bean.context;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Shine {
     String name;
     Printer printer;
