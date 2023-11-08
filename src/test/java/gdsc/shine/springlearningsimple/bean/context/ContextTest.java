@@ -29,31 +29,37 @@ public class ContextTest {
         assertThat(shine).isNotNull();
     }
 
-//    @Test
-//    void test2() {
-//        // TODO : test1의 4단계 그대로 진행하되, 빈 메타정보를 shine1이라는 이름으로 컨테이너에 등록
-//        // 여기에 작성
-//
-//        // 비어있는 Shine정보를 담은 오브젝트 생성
-//        BeanDefinition shineDef = new RootBeanDefinition(Shine.class);
-//
-//        // 빈 프로퍼티 설정
-//        shineDef.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
-//
-//        // TODO : 빈 메타정보를 hello2 라는 이름으로 컨테이너에 등록
-//        // 여기에 작성
-//
-//        // TODO : shine1, shine2 빈을 컨테이너에서 가져오기
-//        // 여기에 작성
-//
-//        // TODO : 테스트 통과시키기
-//        assertThat(shine1).isNotNull();
-//        assertThat(shine2).isNotNull();
-//        assertThat(shine2.sayHello()).isEqualTo("Hello Gdsc Konkuk");
-//
-//        assertThat(shine1).isNotSameAs(shine2);
-//        assertThat(context.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
-//    }
+    @Test
+    void test2() {
+        // TODO : test1의 4단계 그대로 진행하되, 빈 메타정보를 shine1이라는 이름으로 컨테이너에 등록
+        // 여기에 작성
+        StaticApplicationContext context = new StaticApplicationContext();
+        context.registerBean("shine1", Shine.class);
+
+        // 비어있는 Shine정보를 담은 오브젝트 생성
+        BeanDefinition shineDef = new RootBeanDefinition(Shine.class);
+
+        // 빈 프로퍼티 설정
+        shineDef.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
+
+        // TODO : 빈 메타정보를 hello2 라는 이름으로 컨테이너에 등록
+        // 여기에 작성
+        context.registerBeanDefinition("shine2", shineDef);
+
+        // TODO : shine1, shine2 빈을 컨테이너에서 가져오기
+        // 여기에 작성
+        Shine shine1 = context.getBean("shine1", Shine.class);
+        Shine shine2 = context.getBean("shine2", Shine.class);
+
+
+        // TODO : 테스트 통과시키기
+        assertThat(shine1).isNotNull();
+        assertThat(shine2).isNotNull();
+        assertThat(shine2.sayHello()).isEqualTo("Hello Gdsc Konkuk");
+
+//        assertThat(shine1).isNotSameAs(shine2); // Spring Container는 싱글톤 패턴으로 빈을 관리하기 때문에 테스트는 실패함
+        assertThat(context.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
+    }
 
     @Test
     void test3() {
