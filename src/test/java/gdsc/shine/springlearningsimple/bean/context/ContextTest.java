@@ -54,7 +54,7 @@ public class ContextTest {
         assertThat(shine2).isNotNull();
         assertThat(shine2.sayHello()).isEqualTo("Hello Gdsc Konkuk");
 
-//        assertThat(shine1).isNotSameAs(shine2); // Spring Container는 싱글톤 패턴으로 빈을 관리하기 때문에 테스트는 실패함
+        assertThat(shine1).isNotSameAs(shine2);
         assertThat(context.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
     }
 
