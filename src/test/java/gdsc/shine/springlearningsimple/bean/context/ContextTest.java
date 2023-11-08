@@ -1,11 +1,8 @@
 package gdsc.shine.springlearningsimple.bean.context;
 
-import gdsc.shine.springlearningsimple.SpringLearningSimpleApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.RootBeanDefinition;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.StaticApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
