@@ -71,9 +71,13 @@ public class ContextTest {
 
         // TODO : 아이디가 printer 인 빈을 찾아서 shineDef의 printer 프로퍼티에 DI 시키기
         // 여기에 작성
+        StringPrinter printer = context.getBean("printer", StringPrinter.class);
+        shineDef.getPropertyValues().addPropertyValue("printer", printer);
+
 
         // TODO : shine 빈을 컨테이너에 등록시키기
         // 여기에 작성
+        context.registerBeanDefinition("shine", shineDef);
 
         Shine shine = context.getBean("shine", Shine.class);
         shine.print();
