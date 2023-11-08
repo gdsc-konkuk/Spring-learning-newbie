@@ -21,6 +21,7 @@ public class ContextTest {
 
         // TODO : Hello 클래스를 싱글톤 빈으로 컨테이너에 등록
         // 여기에 작성
+        ((AnnotationConfigApplicationContext) applicationContext).registerBean(Shine.class);
 
         // TODO : IoC 컨테이너에서 Hello 찾아오기
         // 여기에 작성
