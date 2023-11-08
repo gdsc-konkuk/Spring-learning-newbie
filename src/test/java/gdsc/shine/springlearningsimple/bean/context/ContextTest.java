@@ -16,15 +16,15 @@ public class ContextTest {
     void test1() {
         // TODO : 미션에 있던 학습 테스트를 위해 사용되는 IoC 컨테이너 생성
         // 여기에 작성
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringLearningSimpleApplication.class);
+        StaticApplicationContext context = new StaticApplicationContext();
 
         // TODO : Hello 클래스를 싱글톤 빈으로 컨테이너에 등록
         // 여기에 작성
-        ((AnnotationConfigApplicationContext) applicationContext).registerBean(Shine.class);
+        context.registerBean(Shine.class);
 
         // TODO : IoC 컨테이너에서 Hello 찾아오기
         // 여기에 작성
-        Shine shine = applicationContext.getBean(Shine.class);
+        Shine shine = context.getBean(Shine.class);
 
         assertThat(shine).isNotNull();
     }
