@@ -27,19 +27,23 @@ public class ContextTest {
 	@Test
 	void test2() {
 		// TODO : test1의 4단계 그대로 진행하되, 빈 메타정보를 shine1이라는 이름으로 컨테이너에 등록
-		// 여기에 작성
+		StaticApplicationContext applicationContext = new StaticApplicationContext();
+
+		BeanDefinition shineDefinition = new RootBeanDefinition(Shine.class);
+		applicationContext.registerBeanDefinition("shine1", shineDefinition);
 
 		// 비어있는 Shine정보를 담은 오브젝트 생성
-		BeanDefinition shineDef = new RootBeanDefinition(Shine.class);
+		BeanDefinition shineEmptyDefinition = new RootBeanDefinition(Shine.class);
 
 		// 빈 프로퍼티 설정
-		shineDef.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
+		shineEmptyDefinition.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
 
-		// TODO : 빈 메타정보를 hello2 라는 이름으로 컨테이너에 등록
-		// 여기에 작성
+		// TODO : 빈 메타정보를 shine2 라는 이름으로 컨테이너에 등록
+		applicationContext.registerBeanDefinition("shine2", shineEmptyDefinition);
 
 		// TODO : shine1, shine2 빈을 컨테이너에서 가져오기
-		// 여기에 작성
+		Shine shine1 = (Shine)applicationContext.getBean("shine1");
+		Shine shine2 = (Shine)applicationContext.getBean("shine2");
 
 		// TODO : 테스트 통과시키기
 		assertThat(shine1).isNotNull();
@@ -47,7 +51,7 @@ public class ContextTest {
 		assertThat(shine2.sayHello()).isEqualTo("Hello Gdsc Konkuk");
 
 		assertThat(shine1).isNotSameAs(shine2);
-		assertThat(context.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
+		assertThat(applicationContext.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
 	}
 
 	@Test
