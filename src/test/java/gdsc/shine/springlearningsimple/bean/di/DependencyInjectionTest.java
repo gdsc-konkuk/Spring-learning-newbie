@@ -12,7 +12,7 @@ import gdsc.shine.springlearningsimple.SpringLearningSimpleApplication;
 
 public class DependencyInjectionTest {
 	/**
-	 * TODO: 생성자 주입을 통해 StationConstructorService에 StationRepository 의존성을 주입하기
+	 * TODO: 생성자 주입을 통해 StationConstructorService에 StationRepository 의존성을 주입하기 [Doone]
 	 */
 	@Test
 	void constructorInjection() {
@@ -23,7 +23,7 @@ public class DependencyInjectionTest {
 	}
 
 	/**
-	 * TODO: 필드 주입을 통해 StationFieldService에 StationRepository 의존성을 주입하기
+	 * TODO: 필드 주입을 통해 StationFieldService에 StationRepository 의존성을 주입하기 [Done]
 	 */
 	@Test
 	void autowiredInjection() {
@@ -33,7 +33,7 @@ public class DependencyInjectionTest {
 	}
 
 	/**
-	 * TODO: setter 주입을 통해 StationSetterService에 StationRepository 의존성을 주입하기
+	 * TODO: setter 주입을 통해 StationSetterService에 StationRepository 의존성을 주입하기 [Done]
 	 */
 	@Test
 	void setterInjection() {
