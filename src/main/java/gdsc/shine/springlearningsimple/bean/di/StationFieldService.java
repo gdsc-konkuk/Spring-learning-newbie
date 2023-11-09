@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component("stationFieldService")
 public class StationFieldService {
-    private StationRepository stationRepository;
+
+	@Autowired
+	private StationRepository stationRepository;
 
     public String sayHi() {
         return stationRepository.sayHi();
