@@ -10,7 +10,7 @@ public class StationConstructorService {
 		this.stationRepository = stationRepository;
 	}
 
-    public String sayHi() {
-        return stationRepository.sayHi();
-    }
+	public String sayHi() {
+		return stationRepository.sayHi();
+	}
 }
