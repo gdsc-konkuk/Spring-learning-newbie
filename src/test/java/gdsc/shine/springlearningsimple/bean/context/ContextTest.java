@@ -15,8 +15,8 @@ public class ContextTest {
 		StaticApplicationContext applicationContext = new StaticApplicationContext();
 
 		// TODO : Shine 클래스를 싱글톤 빈으로 컨테이너에 등록
-		BeanDefinition beanDefinition = new RootBeanDefinition(Shine.class);
-		applicationContext.registerBeanDefinition("shine", beanDefinition);
+		BeanDefinition shineDefinition = new RootBeanDefinition(Shine.class);
+		applicationContext.registerBeanDefinition("shine", shineDefinition);
 
 		// TODO : IoC 컨테이너에서 Shine 찾아오기
 		Shine shine = (Shine)applicationContext.getBean("shine");
