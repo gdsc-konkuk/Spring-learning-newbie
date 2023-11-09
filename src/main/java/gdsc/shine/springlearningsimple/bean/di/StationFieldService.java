@@ -9,7 +9,7 @@ public class StationFieldService {
 	@Autowired
 	private StationRepository stationRepository;
 
-    public String sayHi() {
-        return stationRepository.sayHi();
-    }
+	public String sayHi() {
+		return stationRepository.sayHi();
+	}
 }
