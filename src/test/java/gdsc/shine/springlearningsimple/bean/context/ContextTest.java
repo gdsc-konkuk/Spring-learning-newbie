@@ -56,21 +56,21 @@ public class ContextTest {
 
 	@Test
 	void test3() {
-		StaticApplicationContext context = new StaticApplicationContext();
-		context.registerBeanDefinition("printer", new RootBeanDefinition(StringPrinter.class));
+		StaticApplicationContext applicationContext = new StaticApplicationContext();
+		applicationContext.registerBeanDefinition("printer", new RootBeanDefinition(StringPrinter.class));
 
-		BeanDefinition shineDef = new RootBeanDefinition(Shine.class);
-		shineDef.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
+		BeanDefinition shineDefinition = new RootBeanDefinition(Shine.class);
+		shineDefinition.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
 
-		// TODO : 아이디가 printer 인 빈을 찾아서 shineDef의 printer 프로퍼티에 DI 시키기
-		// 여기에 작성
+		// TODO : 아이디가 printer 인 빈을 찾아서 shineDefinition의 printer 프로퍼티에 DI 시키기
+		shineDefinition.getPropertyValues().addPropertyValue("printer", applicationContext.getBean("printer"));
 
 		// TODO : shine 빈을 컨테이너에 등록시키기
-		// 여기에 작성
+		applicationContext.registerBeanDefinition("shine", shineDefinition);
 
-		Shine shine = context.getBean("shine", Shine.class);
+		Shine shine = applicationContext.getBean("shine", Shine.class);
 		shine.print();
 
-		assertThat(context.getBean("printer").toString()).isEqualTo("Hello Gdsc Konkuk");
+		assertThat(applicationContext.getBean("printer").toString()).isEqualTo("Hello Gdsc Konkuk");
 	}
 }
