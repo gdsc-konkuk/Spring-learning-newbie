@@ -12,13 +12,14 @@ public class ContextTest {
 	@Test
 	void test1() {
 		// TODO : 미션에 있던 학습 테스트를 위해 사용되는 IoC 컨테이너 생성
-		// 여기에 작성
+		StaticApplicationContext applicationContext = new StaticApplicationContext();
 
-		// TODO : Hello 클래스를 싱글톤 빈으로 컨테이너에 등록
-		// 여기에 작성
+		// TODO : Shine 클래스를 싱글톤 빈으로 컨테이너에 등록
+		BeanDefinition beanDefinition = new RootBeanDefinition(Shine.class);
+		applicationContext.registerBeanDefinition("shine", beanDefinition);
 
-		// TODO : IoC 컨테이너에서 Hello 찾아오기
-		// 여기에 작성
+		// TODO : IoC 컨테이너에서 Shine 찾아오기
+		Shine shine = (Shine)applicationContext.getBean("shine");
 
 		assertThat(shine).isNotNull();
 	}
