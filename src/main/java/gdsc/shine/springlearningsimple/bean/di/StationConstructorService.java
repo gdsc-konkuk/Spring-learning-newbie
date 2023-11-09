@@ -4,7 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component("stationConstructorService")
 public class StationConstructorService {
-    private StationRepository stationRepository;
+	private final StationRepository stationRepository;
+
 
     public String sayHi() {
         return stationRepository.sayHi();
