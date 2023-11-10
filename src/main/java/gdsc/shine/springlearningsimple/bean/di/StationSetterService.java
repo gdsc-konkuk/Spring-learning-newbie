@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 public class StationSetterService {
     private StationRepository stationRepository;
 
-    public StationSetterService() {}
     @Autowired
     public void setStationRepository(StationRepository stationRepository) {
         this.stationRepository = stationRepository;
