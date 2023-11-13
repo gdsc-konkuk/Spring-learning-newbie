@@ -39,6 +39,19 @@ public class UriPatternTest {
                 .body("email", notNullValue());
     }
 
+    @DisplayName("Uri Pattern - @PathVariable - multi-digit")
+    @Test
+    void pathVariableLength() {
+        RestAssured.given().log().all()
+                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .when().get("/uri-pattern/users/123")
+                .then().log().all()
+                .statusCode(HttpStatus.OK.value())
+                .body("id", notNullValue())
+                .body("name", notNullValue())
+                .body("email", notNullValue());
+    }
+
     /**
      * UriPatternController > pattern 메서드
      * > 각 요청을 하나의 메서드로 처리하기
