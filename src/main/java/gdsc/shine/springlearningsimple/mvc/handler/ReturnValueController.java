@@ -17,9 +17,12 @@ public class ReturnValueController {
 
     }
 
-//    public void responseBodyForUser() {
-//        return new User("name", "email");
-//    }
+    @GetMapping("/users")
+    public ResponseEntity responseBodyForUser() {
+        User user = new User("name", "email");
+        return ResponseEntity.ok().body(user);
+
+    }
 //
 //    public void responseEntity(@PathVariable Long id) {
 //        return ResponseEntity.ok(new User("name", "email"));
