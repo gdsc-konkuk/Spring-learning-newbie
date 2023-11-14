@@ -1,11 +1,9 @@
 package gdsc.shine.springlearningsimple.mvc.mapping;
 
 import gdsc.shine.springlearningsimple.mvc.domain.User;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.Arrays;
@@ -28,7 +26,7 @@ public class MediaTypeController {
         );
         return ResponseEntity.ok().body(users);
     }
-
+    @GetMapping(value = "/users", produces = MediaType.TEXT_HTML_VALUE)
     public String userPage() {
         return "user page";
     }
