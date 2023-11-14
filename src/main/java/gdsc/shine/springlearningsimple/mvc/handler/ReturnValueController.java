@@ -28,9 +28,10 @@ public class ReturnValueController {
         return ResponseEntity.ok(new User("name", "email"));
     }
 
-//    public void responseEntityFor400() {
-//        return ResponseEntity.badRequest().build();
-//    }
+    @GetMapping("/members")
+    public ResponseEntity responseEntityFor400() {
+        return ResponseEntity.badRequest().build();
+    }
 //
 //    public void thymeleaf() {
 //        return "sample";
