@@ -17,6 +17,7 @@ public class UriPatternController {
         return ResponseEntity.ok().body(user);
     }
 
+    @GetMapping("/patterns/?")
     public ResponseEntity<String> pattern() {
         return ResponseEntity.ok().body("pattern");
     }
