@@ -61,7 +61,7 @@ public class ParamHeaderTest {
         RestAssured.given().log().all()
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .header("HEADER", "hi")
-                .when().get("/param-header/message2")
+                .when().get("/param-header/messageForHeader")
                 .then().log().all()
                 .statusCode(HttpStatus.OK.value())
                 .body(is("hi"));
