@@ -23,11 +23,11 @@ public class ReturnValueController {
         return ResponseEntity.ok().body(user);
 
     }
-//
-//    public void responseEntity(@PathVariable Long id) {
-//        return ResponseEntity.ok(new User("name", "email"));
-//    }
-//
+    @GetMapping("/users/{id}")
+    public ResponseEntity responseEntity(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(new User("name", "email"));
+    }
+
 //    public void responseEntityFor400() {
 //        return ResponseEntity.badRequest().build();
 //    }
