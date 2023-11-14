@@ -18,6 +18,7 @@ public class HttpMethodController {
         return ResponseEntity.created(URI.create("/users/" + id)).build();
     }
 
+    @GetMapping("/users")
     public ResponseEntity<List<User>> showUser() {
         List<User> users = Arrays.asList(
                 new User("이름", "email"),
