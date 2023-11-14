@@ -22,6 +22,7 @@ public class UriPatternController {
         return ResponseEntity.ok().body("pattern");
     }
 
+    @GetMapping("/patterns/**")
     public ResponseEntity<String> patternStars() {
         return ResponseEntity.ok().body("pattern-multi");
     }
