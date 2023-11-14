@@ -2,10 +2,7 @@ package gdsc.shine.springlearningsimple.mvc.handler;
 
 import gdsc.shine.springlearningsimple.mvc.domain.User;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.Arrays;
@@ -16,7 +13,7 @@ import java.util.List;
 public class MethodArgumentController {
 
     @GetMapping("/users")
-    public ResponseEntity<List<User>> requestParam(String userName) {
+    public ResponseEntity<List<User>> requestParam(@RequestParam("name") String userName) {
         List<User> users = Arrays.asList(
                 new User(userName, "email"),
                 new User(userName, "email")
