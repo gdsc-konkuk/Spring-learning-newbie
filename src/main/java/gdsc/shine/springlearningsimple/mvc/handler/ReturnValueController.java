@@ -32,8 +32,9 @@ public class ReturnValueController {
     public ResponseEntity responseEntityFor400() {
         return ResponseEntity.badRequest().build();
     }
-//
-//    public void thymeleaf() {
-//        return "sample";
-//    }
+
+    @GetMapping("/thymeleaf")
+    public ResponseEntity thymeleaf() {
+        return ResponseEntity.ok().body("Hello");
+    }
 }
