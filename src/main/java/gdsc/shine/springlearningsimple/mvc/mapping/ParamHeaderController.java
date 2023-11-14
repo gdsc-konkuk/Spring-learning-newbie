@@ -16,7 +16,7 @@ public class ParamHeaderController {
     public ResponseEntity<String> messageForParam(@RequestParam("name") String name) {
         return ResponseEntity.ok().body(name);
     }
-
+    @GetMapping(value = "/messageForHeader", headers = "HEADER=hi")
     public ResponseEntity<String> messageForHeader() {
         return ResponseEntity.ok().body("hi");
     }
