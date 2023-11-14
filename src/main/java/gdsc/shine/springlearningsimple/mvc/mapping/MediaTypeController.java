@@ -19,6 +19,7 @@ public class MediaTypeController {
         return ResponseEntity.created(URI.create("/users/" + id)).build();
     }
 
+    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<User>> showUser() {
         List<User> users = Arrays.asList(
                 new User("이름", "email"),
