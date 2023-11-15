@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/return-value")
 public class ReturnValueController {
 
+    /**
+     * The return value is converted through
+     * HttpMessageConverter implementations
+     * and written to the response.
+     * See @ResponseBody.
+     */
     @GetMapping("message")
     @ResponseBody
     public String string() {
@@ -21,6 +27,13 @@ public class ReturnValueController {
         return new User("name", "email");
     }
 
+    /**
+     * The return value that specifies the full response
+     * (including HTTP headers and body) is to be converted
+     * through HttpMessageConverter implementations
+     * and written to the response.
+     * See ResponseEntity.
+     */
     @GetMapping("users/{id}")
     public ResponseEntity responseEntity(@PathVariable Long id) {
         return ResponseEntity.ok(new User("name", "email"));
@@ -31,6 +44,14 @@ public class ReturnValueController {
         return ResponseEntity.badRequest().build();
     }
 
+    /**
+     * A view name to be resolved with ViewResolver implementations
+     * and used together with the implicit model — determined
+     * through command objects and @ModelAttribute methods.
+     * The handler method can also programmatically enrich
+     * the model by declaring a Model argument
+     * (see Explicit Registrations).
+     */
     @GetMapping("thymeleaf")
     public String thymeleaf() {
         return "sample";
