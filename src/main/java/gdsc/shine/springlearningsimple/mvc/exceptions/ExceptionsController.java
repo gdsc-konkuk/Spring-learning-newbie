@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExceptionsController {
 
     @GetMapping("/hello")
-    public ResponseEntity helloHandler() {
+    public ResponseEntity<Void> helloHandler() {
         throw new HelloException();
     }
 
     @GetMapping("/hi")
-    public ResponseEntity hiHandler() {
+    public ResponseEntity<Void> hiHandler() {
         throw new HiException();
     }
 

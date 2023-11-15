@@ -13,7 +13,7 @@ import java.util.List;
 public class HttpMethodController {
 
     @PostMapping("users")
-    public ResponseEntity createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         long id = 1L;
         return ResponseEntity.created(URI.create("/users/" + id)).build();
     }

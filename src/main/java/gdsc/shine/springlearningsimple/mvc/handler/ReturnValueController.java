@@ -35,12 +35,12 @@ public class ReturnValueController {
      * See ResponseEntity.
      */
     @GetMapping("users/{id}")
-    public ResponseEntity responseEntity(@PathVariable Long id) {
+    public ResponseEntity<User> responseEntity(@PathVariable Long id) {
         return ResponseEntity.ok(new User("name", "email"));
     }
 
     @GetMapping("members")
-    public ResponseEntity responseEntityFor400() {
+    public ResponseEntity<Void> responseEntityFor400() {
         return ResponseEntity.badRequest().build();
     }
 

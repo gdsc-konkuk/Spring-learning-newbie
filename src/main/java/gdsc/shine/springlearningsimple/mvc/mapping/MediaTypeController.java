@@ -16,7 +16,7 @@ import static org.springframework.http.MediaType.TEXT_HTML_VALUE;
 public class MediaTypeController {
 
     @PostMapping(value = "users", consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         long id = 1L;
         return ResponseEntity.created(URI.create("/users/" + id)).build();
     }
