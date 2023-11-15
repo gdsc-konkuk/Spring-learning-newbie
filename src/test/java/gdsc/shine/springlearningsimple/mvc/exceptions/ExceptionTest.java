@@ -25,7 +25,7 @@ public class ExceptionTest {
     /**
      * ExceptionsController > handle 메서드
      */
-    @DisplayName("Exceptions - @ExceptionHandler")
+    @DisplayName("Exceptions - hello")
     @Test
     void exceptionHandler() {
         RestAssured.given().log().all()
@@ -33,13 +33,13 @@ public class ExceptionTest {
                 .when().get("/exceptions/hello")
                 .then().log().all()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
-                .body(is("CustomException"));
+                .body(is("HelloException"));
     }
 
     /**
-     * HelloAdvice > handle 메서드
+     * ExceptionAdvice > handle 메서드
      */
-    @DisplayName("Exceptions - @ExceptionHandler")
+    @DisplayName("Exceptions - hi")
     @Test
     void controllerAdvice() {
         RestAssured.given().log().all()
@@ -47,6 +47,6 @@ public class ExceptionTest {
                 .when().get("/exceptions/hi")
                 .then().log().all()
                 .statusCode(HttpStatus.BAD_REQUEST.value())
-                .body(is("HelloException"));
+                .body(is("HiException"));
     }
 }
