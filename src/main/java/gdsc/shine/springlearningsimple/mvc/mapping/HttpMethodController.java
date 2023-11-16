@@ -26,8 +26,8 @@ public class HttpMethodController {
 	@GetMapping("/users")
 	public ResponseEntity<List<User>> showUser() {
 		List<User> users = Arrays.asList(
-			new User("이름", "email"),
-			new User("이름", "email")
+			new User("고건호", "rhrjsgh97@gmail.com"),
+			new User("고뭉남", "rhrjsgh97@naver.com")
 		);
 		return ResponseEntity.ok().body(users);
 	}
