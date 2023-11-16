@@ -36,7 +36,7 @@ TDD의 첫 단계 = 실패하는 테스트를 확인하는 것
 
 ---
 
-#### `@GetMapping("/patterns/*")`와 `@GetMapping("/patterns/?")`의 차이
+### `@GetMapping("/patterns/*")`와 `@GetMapping("/patterns/?")`의 차이
 - `@GetMapping("/patterns/*")`:
   - 이 패턴은 `/patterns/`뒤에 **어떤 문자열**이 와도 해당 메서드와 매치
   - ex. `/patterns/a`, `/patterns/b`, `/patterns/anything` 등의 URL과 매치
@@ -45,3 +45,12 @@ TDD의 첫 단계 = 실패하는 테스트를 확인하는 것
   - 이 패턴은 `/patterns/` 뒤의 정확히 **한 문자**만을 허용
   - ex. `/patterns/a`, `/patterns/b`와는 매치되지만, `/patterns/ab`, `/patterns/`, `/patterns/anything` 등은 매치 X
   - `?` = 한 개의 문자만을 대체
+
+### `@RequestParam`과 `@ModelAttribute`의 차이
+- `@RequestParam`:
+  - 주로 단일 파라미터의 값을 HTTP 요청의 쿼리 매개변수(query parameters) or 폼 데이터(form data)에서 추출할 때 사용
+  - 해당 어노테이션은 URL에서 `?name=value` 형식의 쿼리 스트링으로 전달되는 개별 값에 액세스하기 위해 사용
+  - 간단한 타입 변환 가능 + 필수 여부도 지정 가능
+- `@ModelAttribute`:
+  - HTTP 요청의 파라미터를 객체의 필드와 매핑하여 객체를 새로 생성할 때 사용
+  - 폼 데이터(form data)를 객체에 바인딩 → 이 객체를 모델에 추가하여 뷰(view)로 전달하는 데 주로 사용
