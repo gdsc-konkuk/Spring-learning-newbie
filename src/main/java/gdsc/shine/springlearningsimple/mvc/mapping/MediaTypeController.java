@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class MediaTypeController {
 		return ResponseEntity.created(URI.create("/users/" + id)).build();
 	}
 
+	@GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<User>> showUser() {
 		List<User> users = Arrays.asList(
 			new User("고건호", "rhrjsgh97@gmail.com"),
@@ -31,6 +33,7 @@ public class MediaTypeController {
 		return ResponseEntity.ok().body(users);
 	}
 
+	@GetMapping(value = "/users", produces = MediaType.TEXT_HTML_VALUE)
 	public String userPage() {
 		return "user page";
 	}
