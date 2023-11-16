@@ -31,7 +31,7 @@ public class MediaTypeTest {
     @DisplayName("Media Type - Content-Type")
     @Test
     void createUser() {
-        User user = new User("이름", "shine@gdsc.com");
+        User user = new User("고건호", "rhrjsgh97@gmail.com");
 
         RestAssured.given().log().all()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
