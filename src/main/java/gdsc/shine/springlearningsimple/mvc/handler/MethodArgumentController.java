@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class MethodArgumentController {
 	}
 
 	@PostMapping("/users/body")
-	public ResponseEntity requestBody(User user) {
+	public ResponseEntity requestBody(@RequestBody User user) {
 		User newUser = new User(1L, user.getName(), user.getEmail());
 		return ResponseEntity.created(URI.create("/users/" + newUser.getId())).body(newUser);
 	}
