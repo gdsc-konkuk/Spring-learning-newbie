@@ -20,8 +20,8 @@ public class MethodArgumentController {
 	@GetMapping("/users")
 	public ResponseEntity<List<User>> requestParam(@RequestParam String name) {
 		List<User> users = Arrays.asList(
-			new User(userName, "email"),
-			new User(userName, "email")
+			new User(name, "rhrjsgh97@gmail.com"),
+			new User(name, "rhrjsgh97@naver.com")
 		);
 		return ResponseEntity.ok().body(users);
 	}
