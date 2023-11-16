@@ -30,7 +30,7 @@ public class HttpMethodTest {
     @DisplayName("Http Method - POST")
     @Test
     void createUser() {
-        User user = new User("이름", "shine@gdsc.com");
+        User user = new User("고건호", "rhrjsgh97@gmail.com");
 
         RestAssured.given().log().all()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
