@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import gdsc.shine.springlearningsimple.mvc.domain.User;
@@ -18,7 +17,7 @@ import gdsc.shine.springlearningsimple.mvc.domain.User;
 public class MethodArgumentController {
 
 	@GetMapping("/users")
-	public ResponseEntity<List<User>> requestParam(@RequestParam String name) {
+	public ResponseEntity<List<User>> requestParam(String name) {
 		List<User> users = Arrays.asList(
 			new User(name, "rhrjsgh97@gmail.com"),
 			new User(name, "rhrjsgh97@naver.com")
