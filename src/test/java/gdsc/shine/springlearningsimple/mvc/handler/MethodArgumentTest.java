@@ -51,7 +51,7 @@ public class MethodArgumentTest {
 	@DisplayName("Method Arguments - @RequestBody")
 	@Test
 	void requestBody() {
-		User user = new User("이름", "shine@gdsc.com");
+		User user = new User("고건호", "rhrjsgh97@gmail.com");
 
 		RestAssured.given().log().all()
 			.contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -60,7 +60,7 @@ public class MethodArgumentTest {
 			.then().log().all()
 			.statusCode(HttpStatus.CREATED.value())
 			.header("Location", "/users/1")
-			.body("name", is("이름"))
-			.body("email", is("shine@gdsc.com"));
+			.body("name", is("고건호"))
+			.body("email", is("rhrjsgh97@gmail.com"));
 	}
 }
