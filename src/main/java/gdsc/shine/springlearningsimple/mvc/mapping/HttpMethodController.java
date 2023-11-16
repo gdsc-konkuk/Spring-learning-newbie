@@ -19,7 +19,7 @@ public class HttpMethodController {
 
 	@PostMapping("/users")
 	public ResponseEntity createUser(@RequestBody User user) {
-		Long id = 1L;
+		long id = 1L;
 		return ResponseEntity.created(URI.create("/users/" + id)).build();
 	}
 
