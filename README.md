@@ -33,3 +33,15 @@ TDD의 첫 단계 = 실패하는 테스트를 확인하는 것
 - 한번에 이해하기 쉽지 않기 때문에 → 우선 동작하는 코드를 구현한 뒤 원리를 이해하는 순서로 학습하자
 
 ![코드_구현](https://lake-peach-ffa.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F9f7972e8-6377-4bf1-afce-c0cc09f81101%2F1507a461-ffb6-4068-bd61-3d33efea84de%2FUntitled.png?table=block&id=c0f08a01-7c9f-479f-9880-8e589fa18cf6&spaceId=9f7972e8-6377-4bf1-afce-c0cc09f81101&width=2000&userId=&cache=v2)
+
+---
+
+#### `@GetMapping("/patterns/*")`와 `@GetMapping("/patterns/?")`의 차이
+- `@GetMapping("/patterns/*")`:
+  - 이 패턴은 `/patterns/`뒤에 **어떤 문자열**이 와도 해당 메서드와 매치
+  - ex. `/patterns/a`, `/patterns/b`, `/patterns/anything` 등의 URL과 매치
+  - `*` = 세그먼트 내의 모든 문자를 포함
+- `@GetMapping("/patterns/?")`:
+  - 이 패턴은 `/patterns/` 뒤의 정확히 **한 문자**만을 허용
+  - ex. `/patterns/a`, `/patterns/b`와는 매치되지만, `/patterns/ab`, `/patterns/`, `/patterns/anything` 등은 매치 X
+  - `?` = 한 개의 문자만을 대체
