@@ -1,33 +1,35 @@
 package gdsc.shine.springlearningsimple.mvc.mapping;
 
-import gdsc.shine.springlearningsimple.mvc.domain.User;
+import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
-import java.util.Arrays;
-import java.util.List;
+import gdsc.shine.springlearningsimple.mvc.domain.User;
 
 @RestController
 @RequestMapping("/media-type")
 public class MediaTypeController {
 
-    public ResponseEntity createUser(@RequestBody User user) {
-        Long id = 1L;
-        return ResponseEntity.created(URI.create("/users/" + id)).build();
-    }
+	public ResponseEntity createUser(@RequestBody User user) {
+		long id = 1L;
+		return ResponseEntity.created(URI.create("/users/" + id)).build();
+	}
 
-    public ResponseEntity<List<User>> showUser() {
-        List<User> users = Arrays.asList(
-                new User("고건호", "rhrjsgh97@gmail.com"),
-                new User("고뭉남", "rhrjsgh97@naver.com")
-        );
-        return ResponseEntity.ok().body(users);
-    }
+	public ResponseEntity<List<User>> showUser() {
+		List<User> users = Arrays.asList(
+			new User("고건호", "rhrjsgh97@gmail.com"),
+			new User("고뭉남", "rhrjsgh97@naver.com")
+		);
+		return ResponseEntity.ok().body(users);
+	}
 
-    public String userPage() {
-        return "user page";
-    }
+	public String userPage() {
+		return "user page";
+	}
 }
