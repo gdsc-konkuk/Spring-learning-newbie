@@ -1,6 +1,7 @@
 package gdsc.shine.springlearningsimple.mvc.mapping;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,14 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/param-header")
 public class ParamHeaderController {
 
+	@GetMapping(value = "/message")
 	public ResponseEntity<String> message() {
 		return ResponseEntity.ok().body("message");
 	}
 
+	@GetMapping(value = "/message", params = "name")
 	public ResponseEntity<String> messageForParam() {
 		return ResponseEntity.ok().body("hello");
 	}
 
+	@GetMapping(value = "/message", headers = "header=hi")
 	public ResponseEntity<String> messageForHeader() {
 		return ResponseEntity.ok().body("hi");
 	}
