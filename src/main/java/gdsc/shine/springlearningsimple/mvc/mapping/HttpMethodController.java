@@ -6,11 +6,13 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import gdsc.shine.springlearningsimple.mvc.domain.User;
 
 @RestController
+@RequestMapping("/http-method")
 public class HttpMethodController {
 
 	public ResponseEntity createUser(@RequestBody User user) {
