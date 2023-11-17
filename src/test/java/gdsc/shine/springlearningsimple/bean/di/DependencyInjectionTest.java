@@ -21,7 +21,7 @@ public class DependencyInjectionTest {
     }
 
     /**
-     * TODO: 필드 주입을 통해 StationConstructorService에 StationRepository 의존성을 주입하기
+     * TODO: 필드 주입을 통해 StationFieldService에 StationRepository 의존성을 주입하기
      */
     @Test
     void autowiredInjection() {
@@ -31,7 +31,7 @@ public class DependencyInjectionTest {
     }
 
     /**
-     * TODO: setter 주입을 통해 StationConstructorService에 StationRepository 의존성을 주입하기
+     * TODO: setter 주입을 통해 StationSetterService에 StationRepository 의존성을 주입하기
      */
     @Test
     void setterInjection() {
@@ -41,7 +41,7 @@ public class DependencyInjectionTest {
     }
 
     /**
-     * HelloApplication > @SpringBootApplication 설정을 통해 이미 ComponentScan 설정되어있음
+     * SpringLearningSimpleApplication > @SpringBootApplication 설정을 통해 이미 ComponentScan 설정되어있음
      */
     private ApplicationContext getApplicationContext() {
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringLearningSimpleApplication.class);

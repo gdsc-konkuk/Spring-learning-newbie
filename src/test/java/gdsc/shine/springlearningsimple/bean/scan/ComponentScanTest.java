@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ComponentScanTest {
 
     /**
-     * TODO: core > scan 패키지 내에 있는 클래스를 스프링 빈으로 등록하기
+     * TODO: bean > scan 패키지 내에 있는 클래스를 스프링 빈으로 등록하기
      */
     @Test
     void componentScan() {
@@ -25,7 +25,7 @@ public class ComponentScanTest {
     }
 
     /**
-     * HelloApplication > @SpringBootApplication 설정을 통해 이미 ComponentScan 설정되어있음
+     * SpringLearningSimpleApplication > @SpringBootApplication 설정을 통해 이미 ComponentScan 설정되어있음
      */
     private ApplicationContext getApplicationContext() {
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringLearningSimpleApplication.class);
