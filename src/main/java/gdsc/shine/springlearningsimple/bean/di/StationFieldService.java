@@ -1,9 +1,15 @@
 package gdsc.shine.springlearningsimple.bean.di;
 
-public class StationFieldService {
-    private StationRepository stationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-    public String sayHi() {
-        return stationRepository.sayHi();
-    }
+@Component("stationFieldService")
+public class StationFieldService {
+
+	@Autowired
+	private StationRepository stationRepository;
+
+	public String sayHi() {
+		return stationRepository.sayHi();
+	}
 }

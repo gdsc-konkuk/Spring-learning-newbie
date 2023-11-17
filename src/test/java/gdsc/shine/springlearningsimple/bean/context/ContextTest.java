@@ -1,71 +1,76 @@
 package gdsc.shine.springlearningsimple.bean.context;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.support.StaticApplicationContext;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class ContextTest {
 
-    @Test
-    void test1() {
-        // TODO : 미션에 있던 학습 테스트를 위해 사용되는 IoC 컨테이너 생성
-        // 여기에 작성
+	@Test
+	void test1() {
+		// TODO : 미션에 있던 학습 테스트를 위해 사용되는 IoC 컨테이너 생성 [Done]
+		StaticApplicationContext applicationContext = new StaticApplicationContext();
 
-        // TODO : Hello 클래스를 싱글톤 빈으로 컨테이너에 등록
-        // 여기에 작성
+		// TODO : Shine 클래스를 싱글톤 빈으로 컨테이너에 등록 [Done]
+		BeanDefinition shineDefinition = new RootBeanDefinition(Shine.class);
+		applicationContext.registerBeanDefinition("shine", shineDefinition);
 
-        // TODO : IoC 컨테이너에서 Hello 찾아오기
-        // 여기에 작성
+		// TODO : IoC 컨테이너에서 Shine 찾아오기 [Done]
+		Shine shine = (Shine)applicationContext.getBean("shine");
 
-        assertThat(shine).isNotNull();
-    }
+		assertThat(shine).isNotNull();
+	}
 
-    @Test
-    void test2() {
-        // TODO : test1의 4단계 그대로 진행하되, 빈 메타정보를 shine1이라는 이름으로 컨테이너에 등록
-        // 여기에 작성
+	@Test
+	void test2() {
+		// TODO : test1의 4단계 그대로 진행하되, 빈 메타정보를 shine1이라는 이름으로 컨테이너에 등록 [Done]
+		StaticApplicationContext applicationContext = new StaticApplicationContext();
 
-        // 비어있는 Shine정보를 담은 오브젝트 생성
-        BeanDefinition shineDef = new RootBeanDefinition(Shine.class);
+		BeanDefinition shineDefinition = new RootBeanDefinition(Shine.class);
+		applicationContext.registerBeanDefinition("shine1", shineDefinition);
 
-        // 빈 프로퍼티 설정
-        shineDef.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
+		// 비어있는 Shine정보를 담은 오브젝트 생성
+		BeanDefinition shineEmptyDefinition = new RootBeanDefinition(Shine.class);
 
-        // TODO : 빈 메타정보를 hello2 라는 이름으로 컨테이너에 등록
-        // 여기에 작성
+		// 빈 프로퍼티 설정
+		shineEmptyDefinition.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
 
-        // TODO : shine1, shine2 빈을 컨테이너에서 가져오기
-        // 여기에 작성
+		// TODO : 빈 메타정보를 shine2 라는 이름으로 컨테이너에 등록 [Done]
+		applicationContext.registerBeanDefinition("shine2", shineEmptyDefinition);
 
-        // TODO : 테스트 통과시키기
-        assertThat(shine1).isNotNull();
-        assertThat(shine2).isNotNull();
-        assertThat(shine2.sayHello()).isEqualTo("Hello Gdsc Konkuk");
+		// TODO : shine1, shine2 빈을 컨테이너에서 가져오기 [Done]
+		Shine shine1 = (Shine)applicationContext.getBean("shine1");
+		Shine shine2 = (Shine)applicationContext.getBean("shine2");
 
-        assertThat(shine1).isNotSameAs(shine2);
-        assertThat(context.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
-    }
+		// TODO : 테스트 통과시키기 [Done]
+		assertThat(shine1).isNotNull();
+		assertThat(shine2).isNotNull();
+		assertThat(shine2.sayHello()).isEqualTo("Hello Gdsc Konkuk");
 
-    @Test
-    void test3() {
-        StaticApplicationContext context = new StaticApplicationContext();
-        context.registerBeanDefinition("printer", new RootBeanDefinition(StringPrinter.class));
+		assertThat(shine1).isNotSameAs(shine2);
+		assertThat(applicationContext.getBeanFactory().getBeanDefinitionCount()).isEqualTo(2);
+	}
 
-        BeanDefinition shineDef = new RootBeanDefinition(Shine.class);
-        shineDef.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
+	@Test
+	void test3() {
+		StaticApplicationContext applicationContext = new StaticApplicationContext();
+		applicationContext.registerBeanDefinition("printer", new RootBeanDefinition(StringPrinter.class));
 
-        // TODO : 아이디가 printer 인 빈을 찾아서 shineDef의 printer 프로퍼티에 DI 시키기
-        // 여기에 작성
+		BeanDefinition shineDefinition = new RootBeanDefinition(Shine.class);
+		shineDefinition.getPropertyValues().addPropertyValue("name", "Gdsc Konkuk");
 
-        // TODO : shine 빈을 컨테이너에 등록시키기
-        // 여기에 작성
+		// TODO : 아이디가 printer 인 빈을 찾아서 shineDefinition의 printer 프로퍼티에 DI 시키기 [Done]
+		shineDefinition.getPropertyValues().addPropertyValue("printer", applicationContext.getBean("printer"));
 
-        Shine shine = context.getBean("shine", Shine.class);
-        shine.print();
+		// TODO : shine 빈을 컨테이너에 등록시키기 [Done]
+		applicationContext.registerBeanDefinition("shine", shineDefinition);
 
-        assertThat(context.getBean("printer").toString()).isEqualTo("Hello Gdsc Konkuk");
-    }
+		Shine shine = applicationContext.getBean("shine", Shine.class);
+		shine.print();
+
+		assertThat(applicationContext.getBean("printer").toString()).isEqualTo("Hello Gdsc Konkuk");
+	}
 }

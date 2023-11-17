@@ -1,9 +1,16 @@
 package gdsc.shine.springlearningsimple.bean.di;
 
-public class StationConstructorService {
-    private StationRepository stationRepository;
+import org.springframework.stereotype.Component;
 
-    public String sayHi() {
-        return stationRepository.sayHi();
-    }
+@Component("stationConstructorService")
+public class StationConstructorService {
+	private final StationRepository stationRepository;
+
+	public StationConstructorService(StationRepository stationRepository) {
+		this.stationRepository = stationRepository;
+	}
+
+	public String sayHi() {
+		return stationRepository.sayHi();
+	}
 }
