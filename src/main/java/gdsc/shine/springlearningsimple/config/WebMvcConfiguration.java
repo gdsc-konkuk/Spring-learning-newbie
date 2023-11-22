@@ -14,6 +14,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	 * https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-config-view-controller
 	 *
 	 * "/" 요청 시 hello.html 페이지 응답하기
+	 *
+	 * `ParameterizableViewController`를 정의하는 단축 방법
+	 * 호출될 때 즉시 특정 뷰로 포워딩
+	 * 뷰가 응답을 생성하기 전에 실행할 Java 컨트롤러 로직이 없는 정적인 경우에 사용 가능
 	 */
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
