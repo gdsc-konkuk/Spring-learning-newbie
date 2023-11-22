@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import gdsc.shine.springlearningsimple.view.AuthenticationPrincipalArgumentResolver;
 import gdsc.shine.springlearningsimple.view.LoginInterceptor;
 
 @Configuration
@@ -45,5 +46,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	 */
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+		resolvers.add(new AuthenticationPrincipalArgumentResolver());
 	}
 }
