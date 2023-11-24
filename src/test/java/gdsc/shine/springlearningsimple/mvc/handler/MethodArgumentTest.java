@@ -43,7 +43,7 @@ public class MethodArgumentTest {
     }
 
     /**
-     * MethodArgumentController > requestParam 메서드
+     * MethodArgumentController > requestBody 메서드
      * > @RequestBody 활용하여 메서드 파라미터로 활용하기
      * > 로그 창에서 http request의 body 값을 확인하기
      */
