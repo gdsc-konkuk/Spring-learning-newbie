@@ -31,4 +31,12 @@ public class User {
         return email;
     }
 
+    /**
+     * ModelAttribute 용 Setter
+     * @param name
+     */
+    public void setName(String name){
+        this.name = name;
+    }
+
 }

@@ -32,6 +32,14 @@ public class HttpMethodTest {
     void createUser() {
         User user = new User("이름", "shine@gdsc.com");
 
+        //ContentType : MediaType.JSON
+        //body : User내용( 이름, shine@gdsc.com)
+        //method : post
+        //path : /http-method/users
+
+        //기대 응답
+        //201 created
+        //header : Location : /user/1
         RestAssured.given().log().all()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(user)
@@ -44,6 +52,12 @@ public class HttpMethodTest {
     /**
      * HttpMethodController > showUser 메서드
      */
+    //ContentType : MediaType.JSON
+    //method : get
+    //path : /http-method/users
+
+    //기대 응답
+    //200 OK
     @DisplayName("Http Method - GET")
     @Test
     void showUser() {
