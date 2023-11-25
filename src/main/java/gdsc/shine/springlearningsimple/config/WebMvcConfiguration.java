@@ -1,5 +1,6 @@
 package gdsc.shine.springlearningsimple.config;
 
+import gdsc.shine.springlearningsimple.view.AuthenticationPrincipalArgumentResolver;
 import gdsc.shine.springlearningsimple.view.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -42,5 +43,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+
+        resolvers.add(new AuthenticationPrincipalArgumentResolver());
     }
 }
