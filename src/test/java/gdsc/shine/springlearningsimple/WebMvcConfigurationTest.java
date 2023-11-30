@@ -1,6 +1,8 @@
 package gdsc.shine.springlearningsimple;
 
+import gdsc.shine.springlearningsimple.domain.LoginMember;
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import org.assertj.core.api.Assertions;
@@ -25,6 +27,9 @@ class WebMvcConfigurationTest {
      * <p>
      * WebMvcConfiguration의 addViewControllers 메서드로 설정하기
      */
+
+    //Interceptor Prehandle이 먼저 동작하기 때문에, 오류 발생.
+    //LoginInterceptor 설정 해제시 정상동작
     @Test
     void addViewControllers() {
         // when
@@ -67,6 +72,17 @@ class WebMvcConfigurationTest {
     void addArgumentResolvers() {
         RestAssured
                 .given().log().all()
+                .when().get("/favorites")
+                .then().log().all()
+                .statusCode(HttpStatus.OK.value())
+                .extract();
+    }
+
+    @Test
+    void addArgumentResolversWitAccessToken() {
+        RestAssured
+                .given()
+                .header(new Header("Authorization", "accessToken")).log().all()
                 .when().get("/favorites")
                 .then().log().all()
                 .statusCode(HttpStatus.OK.value())
