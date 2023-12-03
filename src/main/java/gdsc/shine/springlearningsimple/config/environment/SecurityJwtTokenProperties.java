@@ -1,7 +1,7 @@
 package gdsc.shine.springlearningsimple.config.environment;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.context.annotation.PropertySource;
 
 /**
@@ -10,13 +10,15 @@ import org.springframework.context.annotation.PropertySource;
  *
  * setter를 추가하지 말고 동작하도록~!
  */
-@ConfigurationProperties
-@PropertySource("classpath:application-test.properties")
+@ConfigurationProperties(prefix = "security.jwt.token")
+@PropertySource(value = {"classpath:application-test.properties"})
 public class SecurityJwtTokenProperties {
+
     private String secretKey;
     private String expireLength;
 
-    public SecurityJwtTokenProperties(@Value("${security.jwt.token.secret-key}")String secretKey, @Value("${security.jwt.token.expire-length}")String expireLength) {
+    @ConstructorBinding
+    public SecurityJwtTokenProperties(String secretKey, String expireLength) {
         this.secretKey = secretKey;
         this.expireLength = expireLength;
     }
@@ -24,7 +26,6 @@ public class SecurityJwtTokenProperties {
     public String getSecretKey() {
         return secretKey;
     }
-
     public String getExpireLength() {
         return expireLength;
     }
