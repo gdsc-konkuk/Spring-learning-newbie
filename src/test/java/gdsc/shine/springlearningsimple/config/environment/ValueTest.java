@@ -20,6 +20,16 @@ class ValueTest {
     }
 
     @Test
+    void key2() {
+        ApplicationContext context = new AnnotationConfigApplicationContext(PropertySourceConfig.class);
+        String[] beanDefinitionNames = context.getBeanDefinitionNames();
+        System.out.println(Arrays.toString(beanDefinitionNames));
+
+        JwtTokenKeyProvider2 jwtTokenKeyProvider2 = context.getBean(JwtTokenKeyProvider2.class);
+        assertThat(jwtTokenKeyProvider2.getSecretKey()).isEqualTo("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.ih1aovtQShabQ7l0cINw4k1fagApg3qLWiB8Kt59Lno");
+    }
+
+    @Test
     void expire() {
         ApplicationContext context = new AnnotationConfigApplicationContext(ValueConfig.class);
         String[] beanDefinitionNames = context.getBeanDefinitionNames();
